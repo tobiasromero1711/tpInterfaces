@@ -29,12 +29,15 @@ class InstagramApi(){
     fun start() {
 
         app.start(8080)
-
         app.routes {
             /*path("/") {
                 get(userController::getUsers, setOf(InstagramApiRoles.ANYONE))
             }
             */
+
+            path("user"){
+                get(userController::getUser, setOf(InstagramApiRoles.USER))
+            }
             path("register")
             {
                 post(userController::register, setOf(InstagramApiRoles.ANYONE))

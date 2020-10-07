@@ -28,7 +28,7 @@ class TokenController {
 
     val provider = JWTProvider(algorithm, generator, verifier)
 
-    fun genereteToken(user: User): String {
+    fun generateToken(user: User): String {
         return provider.generateToken(user)
     }
 

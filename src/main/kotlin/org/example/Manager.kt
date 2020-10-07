@@ -26,9 +26,11 @@ class InstagramApiAccessManager(val instagramSystem: InstagramSystem) : AccessMa
                     ctx.attribute("userId", userId)
                     handler.handle(ctx)
                 } catch (e: NotValidToken) {
-                    throw UnauthorizedResponse("Not valid Token")
+                    ctx.status(401)
+                    throw UnauthorizedResponse(e.message!!)
                 } catch (e: NotFound) {
-                    throw UnauthorizedResponse("Not valid Token")
+                    ctx.status(401)
+                    throw UnauthorizedResponse(e.message!!)
                 }
             }
         }
